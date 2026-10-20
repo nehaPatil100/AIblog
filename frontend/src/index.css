@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
+  --color-paper: #f5f7f8;
+  --color-ink: #14202b;
+  --color-muted: #5a6875;
+  --color-line: #dce2e7;
+  --color-brand: #0f766e;
+  --color-brand-dark: #0b5a54;
+  --color-brand-soft: #e3f3f0;
+  --color-ai: #9a5b00;
+  --color-ai-soft: #fdf1d6;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply bg-brand text-white hover:bg-brand-dark; }
+  .btn-outline { @apply border border-line bg-white text-ink hover:bg-brand-soft; }
+  .btn-ai { @apply bg-ai-soft text-ai hover:bg-amber-200/70; }
+  .btn-danger { @apply bg-red-600 text-white hover:bg-red-700; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .input {
+    @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink placeholder:text-muted/70 focus:border-brand focus:outline-none;
+  }
+  .label { @apply mb-1 block text-sm font-medium text-ink; }
+  .badge { @apply inline-block rounded px-2 py-0.5 text-xs font-medium; }
+}
